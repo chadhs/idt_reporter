@@ -1,0 +1,33 @@
+{% load staticfiles %}
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	<title>What {{ user }} is getting done for team {{ team }}.  :-)</title>
+	<link rel="stylesheet" href="{% static "css/style.css" %}" type="text/css">
+</head>
+<body>
+	<h1>What {{ user }} is getting done for team {{ team }}.  :-)
+	<h2>today's dones:</h2>
+	<ul>
+		{% for done in dones_today %}
+			<li>
+				{% if done.goal_completed == False %}
+					<strong><em>incomplete goal: </em></strong>
+				{% endif %}
+				{{ done.markedup_text|safe }}
+			</li>
+		{% endfor %}
+	</ul>
+	<h2>last week's dones:</h2>
+	<ul>
+		{% for done in dones_lastweek %}
+			<li>
+				{% if done.goal_completed == False %}
+					<strong><em>incomplete goal: </em></strong>
+				{% endif %}
+				{{ done.markedup_text|safe }}
+			</li>
+		{% endfor %}
+	</ul>
+</body>
+</html>
