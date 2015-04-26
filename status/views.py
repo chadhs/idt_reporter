@@ -2,13 +2,22 @@ from django.shortcuts import render
 
 import requests
 import datetime
-import config
+
+
+## .env  -  this needs to live in settings; having trouble importing it from settings
+import os
+assert 'idt_user' in os.environ, 'Set idt_user in your .env file!'
+assert 'idt_token' in os.environ, 'Set idt_token in your .env file!'
+assert 'idt_team' in os.environ, 'Set idt_team in your .env file!'
+idt_user = os.environ['idt_user']
+idt_token = os.environ['idt_token']
+idt_team = os.environ['idt_team']
 
 
 ## configuration
-token = config.token
-team = config.team
-user = config.user
+user = idt_user
+token = idt_token
+team = idt_team
 idt_url = "https://idonethis.com"
 api_dones_url = "%s/api/v0.1/dones/?owner=%s&team=%s&page_size=100" % (idt_url, user, team)
 
