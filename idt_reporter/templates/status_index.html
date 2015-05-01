@@ -1,11 +1,13 @@
 {% extends "base.html" %}
 
+{% load staticfiles %}
+
 {% block title %}
 	What {{ user }} is getting done for team {{ team }}.  :-)
 {% endblock title %}
 
 {% block extra_css %}
-	<link rel="stylesheet" href="{% static "css/style.css" %}">
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
 {% endblock extra_css %}
 
 {% block content %}
