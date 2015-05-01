@@ -47,7 +47,7 @@ TEMPLATE_DEBUG = DEBUG
 ########## MANAGER CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#admins
 ADMINS = (
-    ('Your Name', 'your_email@example.com'),
+    ('Chad Stovern', 'helpme@chadstovern.com'),
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#managers
@@ -275,7 +275,6 @@ LOGGING = {
 ########## END LOGGING CONFIGURATION
 
 
-
 ########## WSGI CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#wsgi-application
 WSGI_APPLICATION = 'conf.wsgi.application'
@@ -285,3 +284,9 @@ WSGI_APPLICATION = 'conf.wsgi.application'
 ########## TESTING CONFIG
 TEST_RUNNER = 'django.test.runner.DiscoverRunner'
 ########## END TESTING CONFIG
+
+
+########## CORE CONFIG
+IDT_USER = get_env_setting('IDT_USER')
+IDT_TOKEN = get_env_setting('IDT_TOKEN')
+IDT_TEAM = get_env_setting('IDT_TEAM')

@@ -4,20 +4,10 @@ import requests
 import datetime
 
 
-## .env  -  this needs to live in settings; having trouble importing it from settings
-import os
-assert 'idt_user' in os.environ, 'Set idt_user in your .env file!'
-assert 'idt_token' in os.environ, 'Set idt_token in your .env file!'
-assert 'idt_team' in os.environ, 'Set idt_team in your .env file!'
-idt_user = os.environ['idt_user']
-idt_token = os.environ['idt_token']
-idt_team = os.environ['idt_team']
-
-
 ## configuration
-user = idt_user
-token = idt_token
-team = idt_team
+user = IDT_USER
+token = IDT_TOKEN
+team = IDT_TEAM
 idt_url = "https://idonethis.com"
 api_dones_url = "%s/api/v0.1/dones/?owner=%s&team=%s&page_size=100" % (idt_url, user, team)
 
