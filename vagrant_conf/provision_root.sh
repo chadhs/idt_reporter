@@ -9,7 +9,6 @@ main() {
     config_npm
     config_shell
     config_ssh
-    config_apache_proxy
 }
 
 install_apt_packages() {
@@ -20,6 +19,8 @@ install_apt_packages() {
 
     # to get a recent nodejs, which bundles npm and nosejs-dev also
     add-apt-repository -y ppa:chris-lea/node.js
+	# ruby-rvm isn't available for 14.04, so let's grab it
+    add-apt-repository -y ppa:rael-gc/rvm
 
     apt-get update --fix-missing
 
@@ -32,14 +33,14 @@ install_apt_packages() {
         emacs23-nox vim-nox git zsh tree htop sqlite3 screen tmux lynx
         cachefilesd # for fast nfs
         apache2 libapache2-mod-wsgi
-        postgresql-9.1 libpq-dev chkconfig
+        postgresql-9.3 libpq-dev
 
-        python-dev python-psycopg2 python-imaging python-setuptools #python-pip
+        python-dev python-psycopg2 python-imaging python-setuptools
         virtualenvwrapper
         libreadline6 libreadline6-dev ncurses-dev apt-file # without installing apt-file python's readline is unable to compile ???
 
         g++ make nodejs libfontconfig # the nodejs package includes npm and nodejs-dev, libfontconfig is a dependency of phantomjs
-        ruby-compass libfssm-ruby
+        ruby-compass
         rabbitmq-server libxml2-dev libxslt-dev
         ruby-json # for heroku toolbelt to not throw warnings about a more efficient json library
     )
@@ -78,13 +79,6 @@ config_shell() { chsh -s `which zsh` vagrant; }
 config_ssh() {
     # host_id_rsa.pub is put in place by a file provisioner in Vagrantfile
     cat /home/vagrant/.ssh/host_id_rsa.pub >> /home/vagrant/.ssh/authorized_keys
-}
-
-config_apache_proxy() {
-    a2enmod proxy_http
-    cp /etc/apache2/sites-available/default{,.bk}
-    cp /home/vagrant/idt_reporter/vagrant_conf/apache/proxy_site /etc/apache2/sites-available/default
-    service apache2 restart
 }
 
 main
