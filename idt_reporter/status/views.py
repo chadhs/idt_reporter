@@ -1,13 +1,14 @@
 from django.shortcuts import render
+from django.conf import settings
 
 import requests
 import datetime
 
 
 ## configuration
-user = IDT_USER
-token = IDT_TOKEN
-team = IDT_TEAM
+user = settings.IDT_USER
+token = settings.IDT_TOKEN
+team = settings.IDT_TEAM
 idt_url = "https://idonethis.com"
 api_dones_url = "%s/api/v0.1/dones/?owner=%s&team=%s&page_size=100" % (idt_url, user, team)
 
