@@ -58,4 +58,4 @@ def index(request):
 
     context = {'team': team, 'user': user, 'dones_today': dones_today, 'dones_lastweek': dones_lastweek}
 
-    return render(request, 'status/index.html', context)
+    return render(request, 'status_index.html', context)

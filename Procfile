@@ -1,1 +1,1 @@
-web: gunicorn idt_reporter.wsgi --log-file -
+web: gunicorn conf.wsgi --pythonpath idt_reporter --log-file -
