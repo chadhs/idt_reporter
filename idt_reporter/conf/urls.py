@@ -19,6 +19,7 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
     url(r'^status/', include('status.urls')),
+    url(r'^fetch/dones/$', 'core.views.fetch_dones', name='fetch_dones'),
 )
 
 if settings.DEBUG:
