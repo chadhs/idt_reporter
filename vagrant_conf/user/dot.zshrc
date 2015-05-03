@@ -36,7 +36,7 @@ alias rmpyc='find . -name "*.pyc" -delete'
 alias pygrep='grep -Rn --include="*.py" --exclude="*.pyc"'
 alias resetdb="dropdb idt_reporter-dev && createdb idt_reporter-dev && ./manage.py migrate"
 alias devserver="foreman start -f Procfile.dev"
-alias devshell="foreman run python idt_reporter/manage.py shell -f Procfile.dev"
+alias devshell="foreman run python idt_reporter/manage.py shell"
 alias test="./manage.py test"
 
 ## command specific history search
